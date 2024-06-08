@@ -149,7 +149,7 @@
     <!-- Registration Form -->
     <div id="registrationForm" class="login-registration-form" style="display:none;">
         <h2>Register</h2>
-        <form action="#" method="POST">
+        <form id="registerForm">
             <div class="form-group">
                 <label for="registerName">Name</label>
                 <input type="text" id="registerName" name="registerName" required>
@@ -204,6 +204,35 @@
         document.getElementById('registrationForm').style.display = 'none';
         document.getElementById('verificationForm').style.display = 'block';
     }
+
+    document.getElementById('registerForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+
+        try {
+            const response = await fetch('http://localhost:5000/api/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            if (response.ok) {
+                alert('Registration successful!');
+                showLoginForm();
+            } else {
+                const errorData = await response.json();
+                alert('Error: ' + errorData.message);
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+    
 </script>
 
 </body>
