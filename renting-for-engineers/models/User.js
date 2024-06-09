@@ -17,6 +17,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-}, { collection: 'renters' }); // Specify the collection name
+}, { collection: 'users' }); // Specify the collection name
 
 module.exports = mongoose.model('User', userSchema);

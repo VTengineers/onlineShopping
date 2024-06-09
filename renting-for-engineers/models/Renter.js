@@ -1,45 +1,13 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-// Create Schema
-const RenterSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  middleName: {
-    type: String
-  },
-  surname: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  collegeIdPhoto: {
-    type: String  // Store path to the photo file
-  },
-  collegeIdNumber: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  hostelAddress: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
+const RenterSchema = new mongoose.Schema({
+    itemName: { type: String, required: true },
+    description: { type: String, required: true },
+    ratePerHour: { type: Number, required: true },
+    lessorName: { type: String, required: true },
+    lessorMobileNumber: { type: String, required: true },
+    lessorAddress: { type: String, required: true },
+    idCardNumber: { type: String, required: true }
+}, { collection: 'renters' }); // Specify the collection name 'renters'
 
-// Create model from schema and export it
-module.exports = Renter = mongoose.model('renters', RenterSchema);
+module.exports = mongoose.model('Renter', RenterSchema);

@@ -3,117 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seller Registration</title>
+    <title>Rent an Item</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        /* Additional custom styles for seller registration form */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            background: #ffffff;
-        }
-
-        .seller-registration-form {
-            width: 100%;
-            max-width: 600px;
-            padding: 30px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            background-color: var(--bs-primary);
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-group button:hover {
-            background-color: var(--bs-primary-dark);
-        }
-
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-    </style>
 </head>
 <body>
-
-<div class="centered">
-    <div class="seller-registration-form">
-        <h2>Seller Registration</h2>
-        <!-- Ensure method="POST" is specified in the form -->
-        <form id="sellerRegistrationForm" action="/api/renters/register" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="middleName">Middle Name</label>
-                <input type="text" id="middleName" name="middleName">
-            </div>
-            <div class="form-group">
-                <label for="surname">Surname</label>
-                <input type="text" id="surname" name="surname" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="collegeIdPhoto">College ID Photo</label>
-                <input type="text" id="collegeIdPhoto" name="collegeIdPhoto">
-            </div>
-            <div class="form-group">
-                <label for="collegeIdNumber">College ID Number</label>
-                <input type="text" id="collegeIdNumber" name="collegeIdNumber" required>
-            </div>
-            <div class="form-group">
-                <label for="hostelAddress">Hostel Address</label>
-                <input type="text" id="hostelAddress" name="hostelAddress" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Register</button>
-            </div>
-        </form>
-    </div>
-</div>
+    <style>
+        #rent-an-item-form {
+          max-width: 600px;
+          margin: 40px auto;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border: 1px solid #ccc;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+      
+        #rent-an-item-form h2 {
+          margin-top: 0;
+          font-weight: bold;
+          color: #333;
+        }
+      
+        #rent-an-item-form .form-group {
+          margin-bottom: 20px;
+        }
+      
+        #rent-an-item-form label {
+          display: block;
+          margin-bottom: 10px;
+          font-weight: bold;
+          color: #333;
+        }
+      
+        #rent-an-item-form input[type="text"], 
+        #rent-an-item-form textarea, 
+        #rent-an-item-form input[type="number"], 
+        #rent-an-item-form input[type="tel"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+        }
+      
+        #rent-an-item-form input[type="file"] {
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+        }
+      
+        #rent-an-item-form button[type="submit"] {
+          background-color: #4CAF50;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      
+        #rent-an-item-form button[type="submit"]:hover {
+          background-color: #3e8e41;
+        }
+      </style>
+      
+      <form id="rent-an-item-form" action="http://localhost:5000/api/renters" method="post">
+        <h2>Rent an Item</h2>
+        <div class="form-group">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" name="itemName" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="ratePerHour">Rate per Hour:</label>
+            <input type="number" id="ratePerHour" name="ratePerHour" required>
+        </div>
+        <div class="form-group">
+            <label for="lessorName">Name of the Lessor:</label>
+            <input type="text" id="lessorName" name="lessorName" required>
+        </div>
+        <div class="form-group">
+            <label for="lessorMobileNumber">Mobile Number of the Lessor:</label>
+            <input type="tel" id="lessorMobileNumber" name="lessorMobileNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="lessorAddress">Address of the Lessor:</label>
+            <textarea id="lessorAddress" name="lessorAddress" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="idCardNumber">ID Card Number:</label>
+            <input type="text" id="idCardNumber" name="idCardNumber" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    
 
 </body>
 </html>

@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const userRoutes = require('./routes/users');
+const renterRoutes = require('./routes/renters');
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // For handling form submissions
 app.use(cors());
 
 // Connect to MongoDB
@@ -20,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/renting-for-engineers', {
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/renters', renterRoutes);
 
 // Default route
 app.get('/', (req, res) => {
